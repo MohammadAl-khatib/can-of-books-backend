@@ -17,4 +17,4 @@ let seedBook = () => {
   newBook.save();
 };
 
-module.exports = {seedBook,bookSchema};
+module.exports = {seedBook,bookSchema,bookModel};
