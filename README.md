@@ -25,3 +25,11 @@ Start time: 2:30
 Finish time: 6:30
 
 Actual time needed to complete: 4 hours
+
+Name of feature: Resource Create and Delete
+Estimate of time needed to complete: 3 hours
+Start time: 2:45
+
+Finish time: 4:15
+
+Actual time needed to complete: 1.5 hours
