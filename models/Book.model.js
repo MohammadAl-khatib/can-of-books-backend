@@ -11,10 +11,10 @@ const bookSchema = new mongoose.Schema({
 
 const bookModel = mongoose.model("book", bookSchema);
 
-let seedBook = () => {
-  let newBook = new bookModel({
-  });
-  newBook.save();
-};
+// let seedBook = () => {
+//   let newBook = new bookModel({
+//   });
+//   newBook.save();
+// };
 
-module.exports = {seedBook,bookSchema,bookModel};
+module.exports = {bookSchema,bookModel};
