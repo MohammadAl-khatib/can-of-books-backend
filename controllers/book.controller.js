@@ -9,7 +9,6 @@ let bookController= (req,res)=>{
 
 
 const createBookController=async (req,res)=>{
-    console.log(req.body);
     let {title,description,status,email}=req.body;
     let newBook=new bookModel({title:title,description:description,staus:status,email:email})
     newBook.save()
@@ -28,8 +27,25 @@ const deleteBookController=  (req,res)=>{
     })
 }
 
+const updateBookController = async (req,res)=>{
+    let bookid=req.params.id;
+    let updatedBook = req.body;
+    bookModel.findOne({_id:bookid}).then(book=>{
+        book.title = updatedBook.title;
+        book.description = updatedBook.description;
+        book.status = updatedBook.status;
+        book.email = updatedBook.email;
+        book.save()
+    }).catch(err=>{
+        res.send('error');
+    });
+    let bookList = await bookModel.find({});
+    res.status(200).send(bookList);
+}
+
 module.exports={
     bookController,
     createBookController,
-    deleteBookController
+    deleteBookController,
+    updateBookController
 }
