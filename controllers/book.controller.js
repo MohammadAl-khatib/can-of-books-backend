@@ -10,7 +10,7 @@ let bookController= (req,res)=>{
 
 const createBookController=async (req,res)=>{
     let {title,description,status,email}=req.body;
-    let newBook=new bookModel({title:title,description:description,staus:status,email:email})
+    let newBook=new bookModel({title:title,description:description,status:status,email:email})
     newBook.save()
     let bookList=await bookModel.find({});
     res.status(201).json(bookList);
@@ -40,6 +40,7 @@ const updateBookController = async (req,res)=>{
         res.send('error');
     });
     let bookList = await bookModel.find({});
+    await console.log(bookList);
     res.status(200).send(bookList);
 }
 
