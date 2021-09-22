@@ -30,18 +30,16 @@ const deleteBookController=  (req,res)=>{
 const updateBookController = async (req,res)=>{
     let bookid=req.params.id;
     let updatedBook = req.body;
-    bookModel.findOne({_id:bookid}).then(book=>{
+    await bookModel.findOne({_id:bookid}).then(async book=>{
         book.title = updatedBook.title;
         book.description = updatedBook.description;
         book.status = updatedBook.status;
         book.email = updatedBook.email;
-        book.save()
+        await book.save()
     }).catch(err=>{
         res.send('error');
     });
-    let bookList = await bookModel.find({});
-    await console.log(bookList);
-    res.status(200).send(bookList);
+    res.status(200).send(await bookModel.find({}));
 }
 
 module.exports={
