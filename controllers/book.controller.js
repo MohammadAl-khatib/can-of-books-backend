@@ -16,9 +16,9 @@ const createBookController=async (req,res)=>{
     res.status(201).json(bookList);
 }
 
-const deleteBookController=  (req,res)=>{
+const deleteBookController= async (req,res)=>{
     let id=req.params.id;
-    bookModel.findByIdAndDelete(id,async (err)=>{
+    await bookModel.findByIdAndDelete(id,async (err)=>{
         if(err){
             res.status(500).send("an error occured");
         }
