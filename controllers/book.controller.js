@@ -18,12 +18,12 @@ const createBookController=async (req,res)=>{
 
 const deleteBookController= async (req,res)=>{
     let id=req.params.id;
-    await bookModel.findByIdAndDelete(id,async (err)=>{
-        if(err){
-            res.status(500).send("an error occured");
-        }
-        let bookList= await bookModel.find({});
-        res.json(bookList);
+    bookModel.findByIdAndDelete(id,async (err)=>{
+        // if(err){
+        //     res.status(500).send("an error occured");
+        // }
+        let bookList= bookModel.find({});
+        res.json(await bookList);
     })
 }
 
@@ -36,9 +36,10 @@ const updateBookController = async (req,res)=>{
         book.status = updatedBook.status;
         book.email = updatedBook.email;
         await book.save()
-    }).catch(err=>{
-        res.send('error');
-    });
+    })
+    // .catch(err=>{
+    //     res.send('error');
+    // });
     res.status(200).send(await bookModel.find({}));
 }
 
